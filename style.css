@@ -77,3 +77,25 @@ button {
     font-weight: bold;
     cursor: pointer;
 }
+/* Gallery 3x3 Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
+    margin-top: 20px;
+}
+
+.gallery-grid img {
+    width: 100%; 
+    height: auto;
+    border: 3px solid #00231C; 
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; 
+    }
+}
