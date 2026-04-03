@@ -39,6 +39,18 @@ nav a {
 
 nav a:hover {
     color: #D3D3D3; 
+
+    nav ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    display: inline; 
+    margin: 0 15px;
+
 }
 
 
