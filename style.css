@@ -76,21 +76,34 @@ button {
     border: none;
     font-weight: bold;
     cursor: pointer;
-}
-/* Gallery 3x3 Grid Layout */
+/* Gallery Grid Container */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 15px; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     margin-top: 20px;
 }
 
+/* Figure styling to keep image and text together */
+.gallery-grid figure {
+    margin: 0;
+    text-align: center; 
+}
+
 .gallery-grid img {
-    width: 100%; 
+    width: 100%;
     height: auto;
-    border: 3px solid #00231C; 
+    border: 2px solid #00231C;
     border-radius: 4px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Styling for the Activity Names */
+figcaption {
+    margin-top: 8px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #00231C; 
 }
 
 
