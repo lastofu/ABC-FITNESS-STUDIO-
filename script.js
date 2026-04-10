@@ -1,8 +1,9 @@
 
 console.log("JavaScript is successfully linked!"); 
 // --- 1. Footer Subscribe Alert ---
-// This runs on every page where the subscribe button exists
-const subscribeBtn = document.querySelector('.footer-subscribe-btn');
+// This will work on every page that has the subscribe-btn
+const subscribeBtn = document.getElementById('subscribe-btn');
+
 if (subscribeBtn) {
     subscribeBtn.addEventListener('click', function() {
         alert("Thank you for subscribing!");
@@ -10,7 +11,7 @@ if (subscribeBtn) {
 }
 
 // --- 2. Gallery Add-to-Cart Alerts ---
-// This selects all buttons with the class 'add-to-cart'
+// (We will apply the 'add-to-cart' class to your buttons in gallery.html)
 const cartButtons = document.querySelectorAll('.add-to-cart');
 cartButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -19,8 +20,8 @@ cartButtons.forEach(button => {
 });
 
 // --- 3. Contact Form Submit Alert ---
-// This targets the form itself to catch the submission event
-const contactForm = document.querySelector('#contact-form');
+// (We will apply the 'contact-form' ID to your form in about.html)
+const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault(); 
