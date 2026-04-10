@@ -124,3 +124,17 @@ figcaption {
         grid-template-columns: 1fr; 
     }
 }
+.add-to-cart {
+    display: block;
+    margin: 10px auto;
+    padding: 8px 16px;
+    background-color: #004a99; /* Adjust to match your blue palette */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.add-to-cart:hover {
+    background-color: #003366;
+}
