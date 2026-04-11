@@ -135,4 +135,12 @@ footer {
     .gallery-grid {
         grid-template-columns: 1fr; 
     }
+} 
+#order-btn {
+    background-color: #28a745; /* Success Green */
+    margin-left: 10px;
+}
+
+#order-btn:hover {
+    background-color: #1e7e34;
 }
