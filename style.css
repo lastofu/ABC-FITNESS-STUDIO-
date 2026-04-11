@@ -1,7 +1,7 @@
-/* ABC Fitness Studio - Bootcamp Blue Palette, Typography Option 2 */
+/* --- 1. GLOBAL STYLES --- */
 body {
-    background-color: #D3D3D3; 
-    color: #00231C; 
+    background-color: #D3D3D3; /* Light Gray */
+    color: #00231C; /* Dark Teal */
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     font-size: 16px; 
     margin: 0;
@@ -12,7 +12,7 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: bold;
-    color: #20458E; 
+    color: #20458E; /* Royal Blue */
 }
 
 h2 {
@@ -22,7 +22,7 @@ h2 {
     color: #00231C; 
 }
 
-/* --- NAVIGATION FIXES --- */
+/* --- 2. NAVIGATION --- */
 nav {
     background-color: #20458E; 
     padding: 15px;
@@ -48,8 +48,9 @@ nav a {
 
 nav a:hover {
     color: #D3D3D3; 
-} /* Added missing bracket here */
+}
 
+/* --- 3. MAIN CONTENT --- */
 main {
     background-color: #FFFFFF; 
     max-width: 900px;
@@ -59,35 +60,7 @@ main {
     border-radius: 8px;
 }
 
-/* --- TABLE STYLES --- */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    color: #00231C;
-}
-
-th {
-    background-color: #00231C; 
-    color: #FFFFFF;
-    padding: 10px;
-}
-
-td {
-    border: 1px solid #D3D3D3;
-    padding: 10px;
-}
-
-/* --- BUTTON FIXES --- */
-button {
-    background-color: #00231C; 
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-} /* Added missing bracket here */
-
-/* --- GALLERY GRID --- */
+/* --- 4. GALLERY GRID --- */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -115,23 +88,49 @@ figcaption {
     color: #00231C; 
 }
 
-/* --- ADD TO CART SPECIFICS --- */
+/* --- 5. BUTTON STYLES --- */
+/* Base button style */
+button {
+    background-color: #00231C; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Add to Cart button specific color */
 .add-to-cart {
     display: block;
     margin: 10px auto;
-    padding: 8px 16px;
     background-color: #004a99; 
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
 }
 
 .add-to-cart:hover {
     background-color: #003366;
 }
 
-/* --- RESPONSIVE DESIGN --- */
+/* Clear Cart button color */
+#clear-cart-btn {
+    background-color: #8b0000; /* Dark Red */
+    margin-left: 10px;
+}
+
+#clear-cart-btn:hover {
+    background-color: #5a0000;
+}
+
+/* --- 6. FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+/* --- 7. RESPONSIVE DESIGN --- */
 @media (max-width: 600px) {
     .gallery-grid {
         grid-template-columns: 1fr; 
