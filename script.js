@@ -1,72 +1,89 @@
 console.log("JavaScript is successfully linked!"); 
 
-console.log("JavaScript and Session Storage are active!");
+console.log("Cart System with Item Tracking and Onload Sync Active!");
 
 // --- 1. SESSION STORAGE INITIALIZATION ---
-// This retrieves the stored cart count or starts at 0 if none exists.
-// We use Number() because session storage always stores data as a string.
-let cartCount = Number(sessionStorage.getItem('abc_cart_count')) || 0;
+// Retrieve the list of items from storage. Parse it from a string back into an array.
+let cartItems = JSON.parse(sessionStorage.getItem('abc_cart_items')) || [];
 
-// --- 2. FOOTER SUBSCRIBE ALERT ---
-const subscribeBtn = document.getElementById('subscribe-btn');
-if (subscribeBtn) {
-    subscribeBtn.addEventListener('click', function() {
-        alert("Thank you for subscribing!");
-    });
-}
+// --- 2. WINDOW ONLOAD SYNC ---
+// This runs as soon as the page finishes loading
+window.onload = function() {
+    if (cartItems.length > 0) {
+        console.log("Session restored. Current cart contains: " + cartItems.join(", "));
+    } else {
+        console.log("Session started with an empty cart.");
+    }
+};
 
-// --- 3. GALLERY ADD-TO-CART (WITH STORAGE) ---
+// --- 3. ADD TO CART (WITH ITEM NAMES) ---
 const cartButtons = document.querySelectorAll('.add-to-cart');
 cartButtons.forEach(button => {
     button.addEventListener('click', function() {
-        cartCount++; // Increase the count
+        // Traverses the DOM to find the specific caption for the clicked button
+        const itemName = this.parentElement.querySelector('figcaption').innerText;
         
-        // SAVE TO SESSION STORAGE
-        sessionStorage.setItem('abc_cart_count', cartCount);
+        cartItems.push(itemName); // Add to local array
         
-        alert("Item added to your cart! Total items in cart: " + cartCount);
+        // Save updated array to Session Storage as a JSON string
+        sessionStorage.setItem('abc_cart_items', JSON.stringify(cartItems));
+        
+        alert(itemName + " has been added to your cart!");
     });
 });
 
-// --- 4. CLEAR CART FUNCTION (WITH STORAGE) ---
+// --- 4. VIEW CART FUNCTION ---
+const viewCartBtn = document.getElementById('view-cart-btn');
+if (viewCartBtn) {
+    viewCartBtn.addEventListener('click', function() {
+        if (cartItems.length === 0) {
+            alert("Your cart is currently empty.");
+        } else {
+            // Join items with a newline character for a clean list
+            alert("Items currently in your cart:\n" + cartItems.join("\n"));
+        }
+    });
+}
+
+// --- 5. CLEAR CART ---
 const clearBtn = document.getElementById('clear-cart-btn');
 if (clearBtn) {
     clearBtn.addEventListener('click', function() {
-        if (cartCount === 0) {
+        if (cartItems.length === 0) {
             alert("Your cart is already empty.");
         } else {
-            cartCount = 0; 
-            
-            // CLEAR SESSION STORAGE
-            sessionStorage.removeItem('abc_cart_count');
-            
-            alert("Your cart has been cleared. Total items: " + cartCount);
+            cartItems = []; // Reset local array
+            sessionStorage.removeItem('abc_cart_items'); // Clear storage
+            alert("Your cart has been cleared.");
         }
     });
 }
 
-// --- 5. ORDER NOW FUNCTION (WITH STORAGE) ---
+// --- 6. ORDER NOW ---
 const orderBtn = document.getElementById('order-btn');
 if (orderBtn) {
     orderBtn.addEventListener('click', function() {
-        if (cartCount === 0) {
-            alert("Your cart is empty! Please add items from the gallery before ordering.");
+        if (cartItems.length === 0) {
+            alert("Please add items to your cart before ordering.");
         } else {
-            alert("Thank you for your order! You have successfully purchased " + cartCount + " item(s).");
-            
-            // RESET AFTER ORDER
-            cartCount = 0;
-            sessionStorage.removeItem('abc_cart_count');
+            alert("Success! You have ordered:\n" + cartItems.join("\n"));
+            cartItems = [];
+            sessionStorage.removeItem('abc_cart_items');
         }
     });
 }
 
-// --- 6. CONTACT FORM SUBMIT ---
+// --- 7. FOOTER & FORM LOGIC ---
+const subscribeBtn = document.getElementById('subscribe-btn');
+if (subscribeBtn) {
+    subscribeBtn.addEventListener('click', () => alert("Thank you for subscribing!"));
+}
+
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault(); 
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         alert("Your message has been sent successfully!");
-        contactForm.reset(); 
+        contactForm.reset();
     });
 }
